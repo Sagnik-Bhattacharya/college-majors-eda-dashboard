@@ -1,0 +1,151 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{\textbf{Economic Outcomes of U.S. College Majors}}
+\author{Sagnik Bhattacharya}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Executive Summary}
+This project presents an end-to-end data analysis of the economic outcomes
+associated with U.S. college majors. Using Python for data cleaning and feature
+engineering, SQL for analytical querying, and Excel for interactive dashboard
+visualization, the analysis explores salary distributions, unemployment risk,
+graduate education premiums, and gender representation across academic fields.
+The goal is to provide data-driven insights that support informed educational
+and career decision-making.
+
+\section*{Dataset Overview}
+The analysis integrates multiple datasets covering:
+\begin{itemize}
+    \item Employment and salary outcomes across all age groups
+    \item Employment statistics for recent graduates
+    \item Graduate versus non-graduate salary comparisons
+    \item Gender representation across majors, including STEM fields
+\end{itemize}
+
+All datasets were cleaned, standardized, and merged using Python before being
+loaded into a relational SQL database and an Excel-based analytical dashboard.
+
+\section*{Data Source and Attribution}
+The datasets used in this project were sourced from Kaggle and are derived from
+the American Community Survey (ACS) conducted by the U.S. Census Bureau.
+
+\begin{itemize}
+    \item Dataset Title: \textit{Uncovering Insights to College Majors and Their Outcomes}
+    \item Curated By: \textbf{The Devastator} (Kaggle)
+    \item Original Source: U.S. Census Bureau — American Community Survey
+    \item Platform: Kaggle
+    \item URL: \url{https://www.kaggle.com/datasets/thedevastator/uncovering-insights-to-college-majors-and-their}
+\end{itemize}
+
+The data was used strictly for educational and analytical purposes. All credit
+for data collection and original compilation belongs to the U.S. Census Bureau
+and the dataset curator.
+
+\section*{Dashboard Overview}
+Figure~\ref{fig:dashboard} presents the interactive Excel dashboard summarizing
+key metrics such as median salary, unemployment rate, graduate salary premium,
+and gender representation. Slicers allow dynamic filtering by major category,
+salary thresholds, and female participation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../assets/dashboard_overview.png}
+    \caption{Excel Dashboard Overview: Economic Outcomes of College Majors}
+    \label{fig:dashboard}
+\end{figure}
+
+\section*{Salary Analysis}
+Median salary varies significantly across academic disciplines. Engineering and
+technology-focused majors consistently rank among the highest-paying fields,
+while arts and social science majors tend to report lower median earnings.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../assets/salary_analysis.png}
+    \caption{Top Majors by Median Salary}
+    \label{fig:salary_analysis}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/salary_by_category.png}
+    \caption{Average Median Salary by Major Category}
+    \label{fig:salary_category}
+\end{figure}
+
+\section*{Unemployment and Employment Risk}
+High earning potential does not always guarantee employment stability. Certain
+high-paying majors also exhibit elevated unemployment rates, indicating increased
+career risk.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/unemployment_by_category.png}
+    \caption{Average Unemployment Rate by Major Category}
+    \label{fig:unemployment_category}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/salary_by_unemployment.png}
+    \caption{Median Salary vs Unemployment Rate by Major}
+    \label{fig:salary_unemployment}
+\end{figure}
+
+\section*{Graduate Education Premium}
+Graduate education generally provides a measurable earnings advantage. Technical
+and professional majors demonstrate the highest graduate salary premiums,
+reinforcing the economic value of advanced education in specialized fields.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/salary_premium_by_category.png}
+    \caption{Average Graduate Salary Premium by Major Category}
+    \label{fig:salary_premium}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/grad_by_non_grad_salary.png}
+    \caption{Graduate vs Non-Graduate Median Salary Comparison}
+    \label{fig:grad_vs_nongrad}
+\end{figure}
+
+\section*{Gender Representation and Salary Trends}
+Gender distribution across majors remains uneven. Majors with higher female
+representation tend to exhibit lower median salaries, highlighting persistent
+structural and occupational disparities within the labor market.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../assets/female_share_by_salary.png}
+    \caption{Female Share vs Median Salary by Major}
+    \label{fig:female_salary}
+\end{figure}
+
+\section*{Key Insights}
+\begin{itemize}
+    \item Engineering and STEM majors offer the highest median salaries overall.
+    \item High salary does not necessarily correlate with low unemployment risk.
+    \item Graduate degrees significantly enhance earning potential across most fields.
+    \item Majors with higher female participation tend to have lower median salaries.
+\end{itemize}
+
+\section*{Conclusion}
+This project demonstrates a complete analytical workflow combining Python, SQL,
+and Excel to extract meaningful insights from real-world data. The resulting
+dashboard and findings provide a practical decision-support tool for students,
+educators, and policymakers evaluating academic and career pathways.
+
+\end{document}

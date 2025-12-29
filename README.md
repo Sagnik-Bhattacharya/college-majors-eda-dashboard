@@ -1,150 +1,218 @@
-# College Majors EDA & Interactive Dashboard
+# 🎓 College Majors: Economic Outcomes & Interactive Dashboard
 
-**Exploratory Data Analysis and Interactive Excel Dashboard of US College Majors**: salary, employment, graduate premiums, and gender representation.
+**End-to-end Exploratory Data Analysis and Interactive Excel Dashboard** analyzing U.S. college majors across salary, employment outcomes, graduate premiums, and gender representation.
 
 ---
 
 ## 📊 Project Overview
 
-This project analyzes US college majors using multiple datasets to provide insights into:  
-- **Salary distributions** across majors and categories  
-- **Employment trends** and risk analysis  
-- **Graduate vs Non-Graduate outcomes**  
-- **Gender representation**, particularly in STEM fields  
+This project explores the **economic and employment outcomes of U.S. college majors** using multiple public datasets.
+It answers questions such as:
 
-The project combines **Python for data cleaning**, **SQL for analytics**, and **Excel dashboards for visualization**, making it **portfolio-ready for data analyst roles**.
+* Which majors offer the **highest median salaries**?
+* Do **high-paying majors also carry higher unemployment risk**?
+* How much does a **graduate degree improve earnings**?
+* How does **gender representation** vary across majors and salaries?
+
+The project demonstrates a **full data analyst workflow**:
+
+* **Python** for data cleaning and feature engineering
+* **SQL (MySQL)** for analytical querying
+* **Excel** for interactive dashboards and business-ready insights
 
 ---
 
 ## 🗂️ Dataset
 
-**Source:** Kaggle – [Uncovering Insights into College Majors](https://www.kaggle.com/datasets/thedevastator/uncovering-insights-to-college-majors-and-their)  
+**Source:** Kaggle
+🔗 *Uncovering Insights into College Majors and Their Outcomes*
+[https://www.kaggle.com/datasets/thedevastator/uncovering-insights-to-college-majors-and-their](https://www.kaggle.com/datasets/thedevastator/uncovering-insights-to-college-majors-and-their)
 
-**License:** CC0: Public Domain  
+**License:** CC0 – Public Domain
+**Original Source:** U.S. Census Bureau (American Community Survey)
 
-**Included Tables:**
-- `all_ages.csv` – All graduates, median salaries, employment data  
-- `recent_grads.csv` – Recent graduates’ employment, gender, and salary  
-- `grad_students.csv` – Graduate vs non-graduate salary comparisons  
-- `women_stem.csv` – Female representation in STEM majors  
-- `majors_list.csv` – Major codes and categories  
+### Included Tables
+
+* `all_ages.csv` — Salary and employment outcomes across all age groups
+* `recent_grads.csv` — Recent graduate employment, gender, and salary data
+* `grad_students.csv` — Graduate vs non-graduate salary comparisons
+* `women_stem.csv` — Female representation in STEM majors
+* `majors_list.csv` — Major codes and category mapping
 
 ---
 
 ## 🛠️ Project Structure
 
 ```
-
 college-majors-eda-dashboard/
 │
 ├─ data/
 │   ├─ raw/                 # Original CSV datasets
-│   └─ cleaned/             # Cleaned CSVs after Python preprocessing
+│   └─ cleaned/             # Cleaned & feature-engineered CSVs
 │
 ├─ notebooks/
 │   ├─ 01_data_cleaning.ipynb
 │   └─ 02_exploratory_data_analysis.ipynb
 │
-├─ sql/
-│   ├─ schema.sql            # MySQL database schema
-│   └─ analysis_queries.sql  # Analytical queries
+├─ sql/            # MySQL database schema
+│   └─ analysis_queries.sql  # Analytical SQL queries
 │
-├─ excel_dashboard/
-│   └─ College_Majors_Dashboard.xlsx
+├─ excel/
+│   └─ US_College_Majors_Economic_Outcomes_Dashboard.xlsx
+│
+├─ assets/                  # Dashboard and chart images
+├─ reports/
+│   ├─ us_college_majors_economic_outcomes.pdf
+│   └─ us_college_majors_economic_outcomes.tex
 │
 └─ README.md
-
 ```
 
 ---
 
 ## 🧹 Step 1: Data Cleaning (Python)
 
-- Cleaned missing values, standardized column names, and calculated derived metrics:  
-  - `employment_rate = Employed / Total`  
-  - `full_time_share = Employed_full_time_year_round / Employed`  
-  - `salary_spread = P75th - P25th`  
-  - `salary_premium = Grad_median - Nongrad_median`  
+All datasets were cleaned and standardized using **pandas**.
+Key steps included:
 
-- Python used: `pandas`, `matplotlib`, `seaborn`.
+* Handling missing values and inconsistent column names
+* Aligning major codes across datasets
+* Creating derived metrics:
+
+  * `employment_rate = Employed / Total`
+  * `full_time_share = Employed_full_time_year_round / Employed`
+  * `salary_spread = P75th - P25th`
+  * `salary_premium = Grad_median - Nongrad_median`
+
+📌 Output: Cleaned, analysis-ready CSV files in `data/cleaned/`
 
 ---
 
 ## 📈 Step 2: Exploratory Data Analysis (EDA)
 
-- **Salary Analysis:** Distribution, top/bottom paying majors, salary vs unemployment  
-- **Employment Analysis:** Employment rate, full-time share, risk-reward scatter  
-- **Graduate Premiums:** Comparison between grad and non-grad salaries  
-- **Gender Analysis:** Female representation in majors, STEM focus, correlation with salary  
+EDA was conducted in Python to uncover patterns and relationships:
 
-All EDA visualizations are in `notebooks/02_exploratory_data_analysis.ipynb`.
+* **Salary Analysis**
+
+  * Distribution of median salaries
+  * Top and bottom paying majors
+  * Salary vs unemployment risk
+
+* **Employment Analysis**
+
+  * Employment rate and full-time share
+  * High-risk vs high-reward majors
+
+* **Graduate Premium Analysis**
+
+  * Graduate vs non-graduate salary comparisons
+  * Salary premium by major category
+
+* **Gender Analysis**
+
+  * Female representation across majors
+  * Gender share vs median salary
+  * STEM-specific insights
+
+All EDA visuals and code are available in
+`notebooks/02_exploratory_data_analysis.ipynb`.
 
 ---
 
-## 🗄️ Step 3: SQL Analytics
+## 🗄️ Step 3: SQL Analytics (MySQL)
 
-- **Database:** MySQL  
-- **Schema:** Dimension table `majors`, fact tables `all_ages`, `recent_grads`, `grad_students`, `women_stem`  
-- **Queries include:**  
-  - Top/bottom salaries  
-  - Unemployment rate insights  
-  - Graduate premium analysis  
-  - Gender vs salary correlation  
-  - Risk-reward majors  
+The cleaned data was loaded into a **MySQL database** for structured analysis.
 
-SQL queries are in `sql/analysis_queries.sql`.
+### Database Design
+
+* **Dimension table:** `majors`
+* **Fact tables:** `all_ages`, `recent_grads`, `grad_students`, `women_stem`
+
+### Analytical Queries
+
+* Top and bottom majors by salary
+* Unemployment rate by major and category
+* Graduate salary premiums
+* Gender representation vs earnings
+* High-risk / high-reward majors
+
+All SQL queries are documented in `sql/analysis_queries.sql`.
 
 ---
 
-## 📊 Step 4: Excel Dashboard
+## 📊 Step 4: Excel Interactive Dashboard
 
-**Sheets and Layout:**
-1. **Overview:** KPIs, Avg Salary & Unemployment by Category  
-2. **Salary Analysis:** Histogram, Top/Bottom 10 Majors, Scatter Salary vs Unemployment  
-3. **Employment & Risk Analysis:** Full-time share, high-risk/high-reward majors  
-4. **Graduate Advantage:** Salary premium comparison, grad vs non-grad scatter  
-5. **Gender & STEM Analysis:** Female representation charts, ShareWomen vs Median Salary  
-6. **Summary Table:** All metrics with conditional formatting, interactive slicers  
+A professional **Excel dashboard** was built using PivotTables and charts.
 
-**Features:**  
-- PivotTables for aggregation  
-- Interactive slicers for Major Category, Salary Range, STEM/Non-STEM  
-- Conditional formatting for top/bottom metrics  
+### Dashboard Sections
 
-Dashboard file: `excel_dashboard/College_Majors_Dashboard.xlsx`
+1. **Overview**
+
+   * KPIs
+   * Average salary & unemployment by category
+2. **Salary Analysis**
+
+   * Top & bottom 10 majors
+   * Salary vs unemployment scatter
+3. **Employment & Risk**
+
+   * Employment rate and full-time share
+   * High-risk majors table
+4. **Graduate Advantage**
+
+   * Salary premium by category
+   * Graduate vs non-graduate comparison
+5. **Gender & STEM Analysis**
+
+   * Female representation across majors
+   * ShareWomen vs salary trends
+6. **Summary Table**
+
+   * All key metrics with conditional formatting
+
+### Features
+
+* Interactive slicers:
+
+  * Major Category
+  * Salary range
+  * Gender share
+* Conditional formatting for quick insights
+
+📁 File: `excel_dashboard/College_Majors_Dashboard.xlsx`
 
 ---
 
 ## 📌 Key Insights
 
-- Engineering, Computer, and Physical Sciences majors have the **highest median salaries**  
-- Some high-paying majors still carry **unemployment risks**  
-- Graduate degrees **increase salary** in most majors, but not all  
-- Female representation in STEM remains **low in many high-paying majors**  
-- Salary distribution is **right-skewed**, indicating few majors dominate top salaries  
+* Engineering and STEM majors dominate the **highest median salaries**
+* High salary does not always imply **low unemployment risk**
+* Graduate degrees generally offer a **positive salary premium**
+* Female representation remains **low in many high-paying majors**
+* Salary distribution is **right-skewed**, with a small number of majors driving top earnings
 
 ---
 
-## 🛠️ Tools Used
+## 🛠️ Tools & Technologies
 
-- **Python:** pandas, matplotlib, seaborn  
-- **SQL:** MySQL  
-- **Excel:** PivotTables, slicers, charts  
-- **Dataset:** Kaggle CC0: Public Domain  
-
----
-
-## 📂 How to Use
-
-1. Load CSV datasets into MySQL using `schema.sql` and `analysis_queries.sql`  
-2. Run SQL queries to export analysis tables to Excel  
-3. Open `College_Majors_Dashboard.xlsx` and interact with slicers/charts  
-4. Explore insights, filter by major category, salary range, or gender share  
+* **Python:** pandas, matplotlib, seaborn
+* **SQL:** MySQL
+* **Excel:** PivotTables, slicers, dashboards
+* **Data Source:** Kaggle (CC0 – Public Domain)
 
 ---
 
-## 📄 License
+## 📂 How to Run the Project
 
-This project is for **educational purposes**. Dataset License: CC0: Public Domain (Kaggle).  
+1. Clean data using `01_data_cleaning.ipynb`
+2. Perform EDA using `02_exploratory_data_analysis.ipynb`
+3. Load cleaned CSVs into MySQL directly.
+4. Execute analytical queries from `analysis_queries.sql`
+5. Open `US_College_Majors_Economic_Outcomes_Dashboard.xlsx` and explore insights interactively
 
 ---
+
+## 📄 License & Attribution
+
+This project is for **educational and portfolio purposes**.
+Dataset provided under **CC0: Public Domain**, curated by *The Devastator* on Kaggle and derived from the U.S. Census Bureau’s American Community Survey.
